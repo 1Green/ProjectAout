@@ -45,6 +45,10 @@ module.exports = {
     }, {
       test: /\.scss$/,
       loaders: ["style", "css", "sass"]
+    },{
+      test: /\.(jpg|png)$/,
+      loader: 'file?name=[path][name].[hash].[ext]',
+      include: path.resolve(__dirname, "./app/img")
     }]
   },
   sassLoader: {

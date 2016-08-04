@@ -6,7 +6,8 @@ export const Home = React.createClass({
   
   getInitialState(){
       return {
-        isExpanded: false
+        isExpanded: false,
+        selected: null
       }
     },
   
@@ -44,23 +45,27 @@ export const Home = React.createClass({
     return (
       <div onClick={ hideDetails } className='home-full-container'>
         
-        <Transition transitionName="fadeIn" transitionAppear={true} transitionAppearTimeout={700} transitionEnterTimeout={700} transitionLeave={false}>
+        <div className="menu-container">
         
-          { !isExpanded && welcome }
-        
-        </Transition>
-        
-        <Transition transitionName="fadeIn" transitionAppear={true} transitionAppearTimeout={700} transitionEnterTimeout={700} transitionLeave={false}>
+          <Transition transitionName="fadeIn" transitionAppear={true} transitionAppearTimeout={700} transitionEnterTimeout={700} transitionLeave={false}>
           
-          { !isExpanded && menu }
-        
-        </Transition>
-  
-        <Transition transitionName="fadeIn"  transitionEnterTimeout={0} transitionLeave={false}>
+            { !isExpanded && welcome }
           
-        { isExpanded && <p>{selected}</p> }
-
-        </Transition>
+          </Transition>
+          
+          <Transition transitionName="fadeIn" transitionAppear={true} transitionAppearTimeout={700} transitionEnterTimeout={700} transitionLeave={false}>
+            
+            { !isExpanded && menu }
+          
+          </Transition>
+    
+          <Transition transitionName="fadeIn"  transitionEnterTimeout={0} transitionLeave={false}>
+            
+          { isExpanded && <p>{selected}</p> }
+    
+          </Transition>
+       
+        </div>
         
       </div>
     )
