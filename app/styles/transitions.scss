@@ -1,0 +1,62 @@
+.fadeIn-appear {
+  opacity: 0.01;
+}
+
+.fadeIn-appear.fadeIn-appear-active {
+  opacity: 1;
+  transition: opacity 0.7s ease-in;
+}
+
+.fadeIn-enter {
+  opacity: 0.01;
+}
+
+.fadeIn-enter.fadeIn-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.fadeIn-leave {
+  opacity: 1;
+}
+
+.fadeIn-leave.fadeIn-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}
+
+
+/* Fold top */
+
+.foldTop-appear {
+  position:relative;
+  top:-2000px;
+}
+
+.foldTop-appear.foldTop-appear-active {
+  position:relative;
+  top:0;
+  transition: all 1s ease-in;
+}
+
+.foldTop-enter {
+  position:relative;
+  top: -2000px;
+}
+
+.foldTop-enter.foldTop-enter-active {
+  position:relative;
+  top:0;
+  transition: all 500s ease-in;
+}
+
+.foldTop-leave {
+  position:relative;
+  top:0;
+}
+
+.foldTop-leave.foldTop-leave-active {
+  position: relative;
+  top:-2000px;
+  transition: all 300ms ease-in;
+}
