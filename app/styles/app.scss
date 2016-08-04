@@ -1,6 +1,11 @@
 @import './reset.scss';
 @import './transitions.scss';
 @import './Commissioned.scss';
+@import './carouselOverride.scss';
+
+body{
+  overflow-x:hidden;
+}
 
 * {
   font-family:sans-serif!important;
@@ -25,7 +30,7 @@
   text-shadow:0 0 15px #000;
   width:100vw;
   height: 100vh;
-  background-image: url('../img/mainback3.jpg');
+  background-image: url('../img/mainback3.jpg')!important;
   background-size: cover;
   display: flex;
   flex-flow: column nowrap;
@@ -34,17 +39,16 @@
   font-size:1.1em;
 
   .menu-container{
-    padding:200px;
+    padding:200px 0;
     //box-shadow: 0 0 1600px 50px #000;
     display:flex;
     flex-flow:column wrap;
     align-items:center;
   }
-
 }
 
 .home-welcome-text{
-  width:30vw;
+  width:50vw;
   text-align: center;
 
   h1 {

@@ -1,0 +1,20 @@
+.slide {
+  display:flex;
+  flex-flow:row wrap;
+  //background-color: darkred;
+  height:30vh;
+  justify-content:center;
+  align-items:center;
+
+  div{
+    max-width: 450px;
+    flex:1 1 auto;
+    height:250px;
+    border:1px solid black;
+    margin:25px;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    background-color: black;
+  }
+}

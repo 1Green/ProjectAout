@@ -1,7 +1,5 @@
 import React from 'react';
 import Transition from 'react-addons-css-transition-group';
-import PersonalWork from './Personal/PersonalWork';
-import CommissionedWork from './Commisioned/CommissionedWork';
 import { Link } from 'react-router';
 
 export const Home = React.createClass({
@@ -15,24 +13,6 @@ export const Home = React.createClass({
   
   render(){
     
-    const { isExpanded, selected } = this.state;
-    
-    const showDetails = (e) => {
-      const item = e.target.innerHTML;
-      this.setState({
-        isExpanded: true,
-        selected: item
-      })
-    };
-    
-    const hideDetails = () => {
-      isExpanded ?
-        this.setState({
-        isExpanded: false,
-        selected: null
-      }) : null
-    };
-    
     const welcome =  <div className='home-welcome-text'>
                         <h1>Hello</h1>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti, deserunt hic. Aperiam asperiores dolore dolorem
@@ -40,35 +20,23 @@ export const Home = React.createClass({
                       </div>;
   
     const menu = <div className='pro-perso'>
-                  <div onClick={ showDetails } className="menu menu-pro">Personal Work</div>
-                  <div onClick={ showDetails } className="menu menu-perso">Commissioned Work</div>
+                  <Link to="/PersonalWork"> <div className="menu menu-pro">Personal Work</div></Link>
+                  <Link to="/CommissionedWork"> <div className="menu menu-perso">Commissioned Work</div></Link>
                 </div>;
     
     return (
-      <div className='home-full-container'>
+     
+      <div>
         
-        { !isExpanded && <div className="menu-container">
-        
-          <Transition transitionName="fadeIn" transitionAppear={true} transitionAppearTimeout={700} transitionEnterTimeout={700} transitionLeave={false}>
+          <Transition transitionName="fadeIn" transitionAppear={true} transitionAppearTimeout={500} transitionEnterTimeout={500} transitionLeave={false}>
           
-            { !isExpanded && welcome }
-          
-          </Transition>
-          
-          <Transition transitionName="fadeIn" transitionAppear={true} transitionAppearTimeout={700} transitionEnterTimeout={700} transitionLeave={false}>
+            <div className="menu-container">
             
-            { !isExpanded && menu }
-          
-          </Transition>
-    
-       
-        </div> }
-        
-          <Transition transitionName="fadeIn"  transitionEnterTimeout={0} transitionLeave={false}>
+              { welcome }
+              { menu }
+              
+            </div>
             
-          { selected == "Personal Work" && <PersonalWork/> }
-          { selected == "Commissioned Work" && <CommissionedWork/> }
-    
           </Transition>
         
       </div>

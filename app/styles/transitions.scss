@@ -4,7 +4,7 @@
 
 .fadeIn-appear.fadeIn-appear-active {
   opacity: 1;
-  transition: opacity 0.7s ease-in;
+  transition: opacity 0.5s ease-in;
 }
 
 .fadeIn-enter {
@@ -24,6 +24,46 @@
   opacity: 0.01;
   transition: opacity 300ms ease-in;
 }
+
+
+
+/* fadeFast */
+
+.fadeFast-appear {
+  opacity: 0.01;
+}
+
+.fadeFast-appear.fadeFast-appear-active {
+  opacity: 1;
+  transition: opacity 0.2s ease-in;
+}
+
+.fadeFast-enter {
+  opacity: 0.01;
+}
+
+.fadeFast-enter.fadeFast-enter-active {
+  opacity: 1;
+  transition: opacity 200ms ease-in;
+}
+
+.fadeFast-leave {
+  opacity: 1;
+}
+
+.fadeFast-leave.fadeFast-leave-active {
+  opacity: 0.01;
+  transition: opacity 200ms ease-in;
+}
+
+
+
+
+
+
+
+
+
 
 
 /* Fold top */
