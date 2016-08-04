@@ -1,5 +1,7 @@
 import React from 'react';
 import Transition from 'react-addons-css-transition-group';
+import PersonalWork from './Personal/PersonalWork';
+import CommissionedWork from './Commisioned/CommissionedWork';
 import { Link } from 'react-router';
 
 export const Home = React.createClass({
@@ -43,9 +45,9 @@ export const Home = React.createClass({
                 </div>;
     
     return (
-      <div onClick={ hideDetails } className='home-full-container'>
+      <div className='home-full-container'>
         
-        <div className="menu-container">
+        { !isExpanded && <div className="menu-container">
         
           <Transition transitionName="fadeIn" transitionAppear={true} transitionAppearTimeout={700} transitionEnterTimeout={700} transitionLeave={false}>
           
@@ -59,13 +61,15 @@ export const Home = React.createClass({
           
           </Transition>
     
+       
+        </div> }
+        
           <Transition transitionName="fadeIn"  transitionEnterTimeout={0} transitionLeave={false}>
             
-          { isExpanded && <p>{selected}</p> }
+          { selected == "Personal Work" && <PersonalWork/> }
+          { selected == "Commissioned Work" && <CommissionedWork/> }
     
           </Transition>
-       
-        </div>
         
       </div>
     )

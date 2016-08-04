@@ -1,5 +1,6 @@
 @import './reset.scss';
 @import './transitions.scss';
+@import './Commissioned.scss';
 
 * {
   font-family:sans-serif!important;
@@ -21,15 +22,15 @@
 
 .home-full-container {
   color:#DDD;
-  text-shadow:0px 0px 15px #000;
+  text-shadow:0 0 15px #000;
   width:100vw;
   height: 100vh;
   background-image: url('../img/mainback3.jpg');
   background-size: cover;
   display: flex;
   flex-flow: column nowrap;
-  align-items: center;
   justify-content:flex-start;
+  padding:50px 50px;
   font-size:1.1em;
 
   .menu-container{
@@ -66,12 +67,9 @@
     justify-content: center;
     align-items: center;
     margin: 10px 10px;
-    position:relative;
-    top:0;
     transition:all 0.2s ease;
 
     &:hover {
-      top:-5px;
       transition:all 0.3s ease;
       transform: scale(1.1);
       color:white;
