@@ -15,7 +15,7 @@ function addGetHookIf( conditionFn, hookFn ) {
 				return;
 			}
 
-			// Hook needed; redefine it so that the support commissionedWorkSchema is not executed again.
+			// Hook needed; redefine it so that the support commissionedWorkImages is not executed again.
 			return ( this.get = hookFn ).apply( this, arguments );
 		}
 	};

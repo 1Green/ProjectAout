@@ -1,6 +1,6 @@
 import React from 'react';
-import {PhotoCarousel} from './CommissionedPhotos';
-import {VideoCarousel} from './CommissionedVideos';
+import { PhotoCarousel } from './CommissionedPhotos';
+import { VideoCarousel } from './Commissionedvideos';
 import Transition from 'react-addons-css-transition-group';
 
 export default React.createClass({
@@ -15,19 +15,23 @@ export default React.createClass({
   
   componentWillMount(){
     
-    fetch('http://localhost:3000/API/commissionedWork')
+    fetch('http://localhost:3000/API/commissionedWorkImages')
       .then(data => data.json())
       .then(data => this.setState({
         photoCategories: data
-      })
-    );
+      }));
+  
+    fetch('http://localhost:3000/API/commissionedWorkVideos')
+      .then(data => data.json())
+      .then(data => this.setState({
+        videoCategories: data
+      }));
     
   },
   
   render(){
     
     const { selection, photoCategories, videoCategories } = this.state;
-    
     const setChoice = (e) => {
       const item = e.target.innerHTML;
       this.setState({

@@ -38,15 +38,27 @@ if (isDeveloping) {
   
   // DEV USES
 
+  
   app.use(middleware);
   app.use(webpackHotMiddleware(compiler));
   app.use(express.static(__dirname + '/app/data'));
   
+  
   // API CONFIG
   
-  const commissionedWorkSchema = require('./models/commissionedWorkSchema');
-  commissionedWorkSchema.methods(['get', 'put', 'post', 'delete']);
-  commissionedWorkSchema.register(app, '/API/commissionedWork');
+  
+  //Commissioned Work Images
+  
+  const commissionedWorkImages = require('./models/commissionedWorkImages');
+  commissionedWorkImages.methods(['get', 'put', 'post', 'delete']);
+  commissionedWorkImages.register(app, '/API/commissionedWorkImages');
+  
+  //Commissioned Work Videos
+  
+  const commissionedWorkVideos = require('./models/commissionedWorkVideos');
+  commissionedWorkVideos.methods(['get', 'put', 'post', 'delete']);
+  commissionedWorkVideos.register(app, '/API/commissionedWorkVideos');
+ 
   
   // ROUTES
   
