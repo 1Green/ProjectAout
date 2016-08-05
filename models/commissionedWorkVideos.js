@@ -4,7 +4,8 @@ const mongoose = restful.mongoose;
 const commissionedWorkVideos = new mongoose.Schema({
       
         title: String,
-        url: String
+        sampleUrl: String,
+        fullUrl:String
       
 });
 
