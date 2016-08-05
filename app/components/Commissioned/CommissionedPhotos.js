@@ -5,75 +5,35 @@ export const PhotoCarousel = React.createClass({
   
   render() {
     
+    const { categories } = this.props;
+    
     var settings = {
       dots: true,
       infinite: false,
       slidesToShow: 1,
       slidesToScroll: 1,
-      draggable: true
+      draggable: true,
+      className: "photo-menu"
     };
     
-    return (
-      <Slider {...settings}>
-        
-        <div>
-          
-          <div className="slide">
-        
-            <div>TEST</div>
-            <div>TEST2</div>
-            <div>TEST3</div>
-
-          </div>
-          
-          <div className="slide">
-          
-            <div>TEST4</div>
-            <div>TEST5</div>
-            <div>TEST6</div>
-         
-          </div>
-        
-        </div>
-        
-        <div>
-         
-          <div className="slide">
-         
-            <div>TEST</div>
-            <div>TEST2</div>
-            <div>TEST3</div>
+    const renderCategories = categories.map((category, index) => {
+      return (
+        <div key={index} style={{ backgroundImage:`url(${ category.url })`, backgroundSize:"cover", backgroundPosition:"center" }}> { category.title.toUpperCase() } </div>
+      )
+    });
     
-          </div>
-          
-          <div className="slide">
-          
-            <div>TEST4</div>
-            <div>TEST5</div>
-            <div>TEST6</div>
-          
-          </div>
-        </div>
+    const firstPage = <div><div className="sliderow"> { renderCategories.slice(0,6) }</div></div>;
+    const secondPage = categories.length > 6 ? <div><div className="sliderow"> { renderCategories.slice(6,12) }</div></div> : [];
+    
+    
+    
+    
+    return (
+      
+      <Slider { ...settings }>
         
-        <div>
-          
-          <div className="slide">
-           
-            <div>TEST</div>
-            <div>TEST2</div>
-            <div>TEST3</div>
-          
-          </div>
-          
-          <div className="slide">
-           
-            <div>TEST4</div>
-            <div>TEST5</div>
-            <div>TEST6</div>
-          
-          </div>
-       
-        </div>
+        { firstPage }
+        { secondPage }
         
       </Slider>
     );

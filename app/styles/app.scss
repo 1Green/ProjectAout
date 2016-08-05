@@ -11,6 +11,10 @@ body{
   font-family:sans-serif!important;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 .navbar {
   color:white;
   background-color: rgba(0,0,0,0.5);
@@ -31,6 +35,8 @@ body{
   width:100vw;
   height: 100vh;
   background-image: url('../img/mainback3.jpg')!important;
+  background-color:rgba(200,200,200,0.1)!important;
+  background-blend-mode: screen!important;
   background-size: cover;
   display: flex;
   flex-flow: column nowrap;

@@ -14,13 +14,15 @@
 
   .work-menu{
     display:flex;
+    flex-flow:row wrap;
     width:20%;
     justify-content: space-between;
-    margin-top:40px;
+    margin:40px 0 20px 0;
     align-self:center;
 
     p{
       transition:all 0.2s ease;
+      margin: 10px 10px 0 10px;
 
       &:hover {
         transition:all 0.3s ease;
