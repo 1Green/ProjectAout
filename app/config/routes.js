@@ -4,6 +4,7 @@ import { App } from '../components/App';
 import { Home } from '../components/Home';
 import PersonalWork from '../components/Personal/PersonalWork';
 import CommissionedWork from '../components/Commissioned/CommissionedWork';
+import PhotoSerie from '../components/Commissioned/photos/PhotoSerie';
 
 export const Routes = (
   <Router history={ browserHistory }>
@@ -15,8 +16,10 @@ export const Routes = (
       <Route path="/PersonalWork/" component={PersonalWork}>
       </Route>
       
-      <Route path="/CommissionedWork/" component={CommissionedWork}>
+      <Route path="/CommissionedWork" component={CommissionedWork}>
+        <Route path="photos/:series" component={ PhotoSerie }/>
       </Route>
+      
     
     </Route>
   

@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { PhotoCarousel } from './CommissionedPhotos';
-import { VideoCarousel } from './Commissionedvideos';
+import { PhotoCarousel } from './photos/CommissionedPhotos';
+import { VideoCarousel } from './videos/Commissionedvideos';
 import Transition from 'react-addons-css-transition-group';
 
 export default React.createClass({
@@ -60,6 +60,10 @@ export default React.createClass({
           
           { displayPhotos && <PhotoCarousel categories={ photoCategories }/> }
           { displayVideos && <VideoCarousel categories={ videoCategories } /> }
+          { this.props.children && React.cloneElement(this.props.children, {
+            photos : "??"
+          }) }
+          
 
         </Transition>
         

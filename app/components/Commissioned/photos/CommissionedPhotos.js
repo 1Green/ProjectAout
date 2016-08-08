@@ -1,7 +1,10 @@
 import React from 'react';
 import Slider from 'react-slick';
+import { Link, withRouter } from 'react-router';
 
-export const PhotoCarousel = React.createClass({
+export const PhotoCarousel = withRouter(
+  
+  React.createClass({
   
   render() {
     
@@ -38,4 +41,5 @@ export const PhotoCarousel = React.createClass({
       </Slider>
     );
   }
-});
+})
+);
