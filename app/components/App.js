@@ -5,12 +5,14 @@ import { RouteTransition } from 'react-router-transition';
 export const App = React.createClass({
   render() {
     return (
+      
       <div>
-        <Navbar/><div className="home-full-container">
-
+        <Navbar/>
         
-        <div>{ this.props.children }</div>
-      </div>
+        <div className="home-full-container">
+           { this.props.children }
+        </div>
+        
       </div>
     );
   }

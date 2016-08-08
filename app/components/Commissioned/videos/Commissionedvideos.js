@@ -38,16 +38,17 @@ export const VideoCarousel = React.createClass({
     
     
     return (
+      
       <Transition transitionName="fadeFast" transitionAppear={true} transitionAppearTimeout={0} transitionEnterTimeout={0} transitionLeave={false}>
       
-      <Slider { ...settings }>
+        <Slider { ...settings }>
+          
+          { firstPage }
+          { secondPage }
         
-        { firstPage }
-        { secondPage }
-      
-      </Slider>
+        </Slider>
         
-        </Transition>
+      </Transition>
     );
   }
 });

@@ -20,14 +20,22 @@ export const Routes = (
    
     <IndexRoute component={ Home }/>
       
-      <Route path="/PersonalWork" component={PersonalWork}>
+      <Route path="/PersonalWork" component={ PersonalWork }>
       </Route>
       
-      <Route path="/CommissionedWork/" component={CommissionedWork}>
+      <Route path="/CommissionedWork/" component={ CommissionedWork }>
         
         <IndexRedirect to="photos" />
-        <Route path="photos" component={ PhotoCarousel }/>
-        <Route path="videos" component={ VideoCarousel }/>
+        
+        <Route path="photos" component={ PhotoCarousel }>
+          <Route path="/CommissionedWork/photos/:series" component={ PhotoSerie }/>
+        </Route>
+        
+        <Route path="videos" component={ VideoCarousel }>
+          {/*<Route path="/CommissionedWork/videos/:series" component={ PhotoSerie }/>*/}
+        </Route>
+        
+        
       
       </Route>
       
