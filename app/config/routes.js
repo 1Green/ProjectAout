@@ -12,10 +12,10 @@ export const Routes = (
    
     <IndexRoute component={ Home }/>
       
-      <Route path="/PersonalWork" component={PersonalWork}>
+      <Route path="/PersonalWork/" component={PersonalWork}>
       </Route>
       
-      <Route path="CommissionedWork" component={CommissionedWork}>
+      <Route path="/CommissionedWork/" component={CommissionedWork}>
       </Route>
     
     </Route>

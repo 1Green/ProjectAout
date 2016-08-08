@@ -18,7 +18,7 @@ export const PhotoCarousel = React.createClass({
     
     const renderCategories = categories.map((category, index) => {
       return (
-        <div key={index} style={{ backgroundImage:`url(${ category.url })`, backgroundSize:"cover", backgroundPosition:"center" }}> { category.title.toUpperCase() } </div>
+        <div className="photo-container" key={index} style={{ backgroundImage:`url(${ category.coverUrl })`}}> { category.coverTitle.toUpperCase() } </div>
       )
     });
     

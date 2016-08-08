@@ -3,9 +3,13 @@ const mongoose = restful.mongoose;
 
 const commissionedWorkImages = new mongoose.Schema({
       
-        title: String,
-        url: String
-      
+        coverUrl: String,
+        coverTitle: String,
+        images : [{
+                title: String,
+                url: String
+        }]
+
 });
 
 module.exports = restful.model('commissionedWorkImages', commissionedWorkImages);

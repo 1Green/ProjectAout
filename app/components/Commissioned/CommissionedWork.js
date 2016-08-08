@@ -16,13 +16,13 @@ export default React.createClass({
   
   componentWillMount(){
     
-    fetch('http://localhost:3000/API/commissionedWorkImages')
+    fetch('http://localhost:3000/API/commissionedWorkImages/')
       .then(data => data.json())
       .then(data => this.setState({
         photoCategories: data
       }));
   
-    fetch('http://localhost:3000/API/commissionedWorkVideos')
+    fetch('http://localhost:3000/API/commissionedWorkVideos/')
       .then(data => data.json())
       .then(data => this.setState({
         videoCategories: data
@@ -40,9 +40,9 @@ export default React.createClass({
       })
     };
     
-    const displayPhotos = selection == "Photos" && videoCategories.length;
-    const displayVideos = selection == "Videos" && photoCategories.length;
-    const selectedStyle = {transform: "scale(1.3)"};
+    const displayPhotos = selection == "Photos" && photoCategories.length ;
+    const displayVideos = selection == "Videos" && videoCategories.length;
+    const selectedStyle = {transform: "scale(1.3)", color:"white"};
     
     return (
       
@@ -55,8 +55,8 @@ export default React.createClass({
           <p style={ displayVideos ? selectedStyle : null } onClick={ setChoice }>Videos</p>
         </div>
         
-        <Transition component="div" transitionName="fadeFast" transitionAppear={true} transitionAppearTimeout={500}
-                    transitionEnterTimeout={500} transitionLeave={false}>
+        <Transition component="div" transitionName="fadeFast" transitionAppear={false} transitionAppearTimeout={0}
+                    transitionEnterTimeout={0} transitionLeave={false}>
           
           { displayPhotos && <PhotoCarousel categories={ photoCategories }/> }
           { displayVideos && <VideoCarousel categories={ videoCategories } /> }

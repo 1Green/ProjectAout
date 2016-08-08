@@ -19,9 +19,9 @@ export const VideoCarousel = React.createClass({
     
     const renderCategories = categories.map((category, index) => {
       return (
-        <div>
-          <p>HELLo</p>
-          <video onMouseEnter={e => playVideo(e.target)} onMouseLeave={e => stopVideo(e.target)} loop key={index} width="97%" height="97%" src={`${category.sampleUrl}`}>
+        <div className="video-container">
+          <p>{category.title.toUpperCase()}</p>
+          <video onMouseEnter={e => playVideo(e.target)} onMouseLeave={e => stopVideo(e.target)} loop key={index} width="99%" height="99%" src={`${category.sampleUrl}`}>
             Your browser does not support videos.
           </video>
         </div>
