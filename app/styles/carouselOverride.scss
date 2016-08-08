@@ -46,15 +46,15 @@
       max-width: 600px;
       flex:1 1 450px;
       color:white;
-      //max-height:200px;
-      box-shadow:0 0 8px 1px #000;
+      //max-height:100px;
+      //box-shadow:0 0 8px 1px #000;
       margin:25px;
       display: flex;
       justify-content:center;
       align-items:center;
 
       video{
-
+        box-shadow:0 0 8px 1px #000;
       }
     }
   }

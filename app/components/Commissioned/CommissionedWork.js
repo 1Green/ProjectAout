@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { PhotoCarousel } from './CommissionedPhotos';
 import { VideoCarousel } from './Commissionedvideos';
 import Transition from 'react-addons-css-transition-group';
@@ -39,8 +40,8 @@ export default React.createClass({
       })
     };
     
-    const displayPhotos = selection == "Photos";
-    const displayVideos = selection == "Videos";
+    const displayPhotos = selection == "Photos" && videoCategories.length;
+    const displayVideos = selection == "Videos" && photoCategories.length;
     const selectedStyle = {transform: "scale(1.3)"};
     
     return (
@@ -54,13 +55,15 @@ export default React.createClass({
           <p style={ displayVideos ? selectedStyle : null } onClick={ setChoice }>Videos</p>
         </div>
         
-        <Transition component="div" transitionName="fadeFast" transitionAppear={true} transitionAppearTimeout={0}
-                    transitionEnterTimeout={0} transitionLeave={false}>
+        <Transition component="div" transitionName="fadeFast" transitionAppear={true} transitionAppearTimeout={500}
+                    transitionEnterTimeout={500} transitionLeave={false}>
           
           { displayPhotos && <PhotoCarousel categories={ photoCategories }/> }
           { displayVideos && <VideoCarousel categories={ videoCategories } /> }
-        
+
         </Transition>
+        
+        
       </div>
     )
   }

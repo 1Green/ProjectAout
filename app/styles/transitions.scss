@@ -35,7 +35,7 @@
 
 .fadeFast-appear.fadeFast-appear-active {
   opacity: 1;
-  transition: opacity 0.2s ease-in;
+  transition: opacity 0.5s ease-in;
 }
 
 .fadeFast-enter {
@@ -44,7 +44,7 @@
 
 .fadeFast-enter.fadeFast-enter-active {
   opacity: 1;
-  transition: opacity 400ms ease-in;
+  transition: opacity 500ms ease-in;
 }
 
 .fadeFast-leave {
