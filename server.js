@@ -51,13 +51,13 @@ if (isDeveloping) {
   
   const commissionedWorkImages = require('./models/commissionedWorkImages');
   commissionedWorkImages.methods(['get', 'put', 'post', 'delete']);
-  commissionedWorkImages.register(app, '/API/commissionedWorkImages');
+  commissionedWorkImages.register(app, '/API/commissionedWorkImages/');
   
   //Commissioned Work Videos
   
   const commissionedWorkVideos = require('./models/commissionedWorkVideos');
   commissionedWorkVideos.methods(['get', 'put', 'post', 'delete']);
-  commissionedWorkVideos.register(app, '/API/commissionedWorkVideos');
+  commissionedWorkVideos.register(app, '/API/commissionedWorkVideos/');
  
   
   // ROUTES

@@ -5,7 +5,7 @@ export const VideoCarousel = React.createClass({
   
   render() {
     
-    const { categories } = this.props;
+    const { videos } = this.props;
     
     var settings = {
       dots: true,
@@ -17,11 +17,11 @@ export const VideoCarousel = React.createClass({
     };
   
     
-    const renderCategories = categories.map((category, index) => {
+    const renderCategories = videos.map((category, index) => {
       return (
         <div className="video-container">
           <p>{category.title.toUpperCase()}</p>
-          <video onMouseEnter={e => playVideo(e.target)} onMouseLeave={e => stopVideo(e.target)} loop key={index} width="99%" height="99%" src={`${category.sampleUrl}`}>
+          <video onMouseEnter={e => playVideo(e.target)} onMouseLeave={e => stopVideo(e.target)} loop key={index} width="99%" height="99%" src={`/commissionedWork/${category.sampleUrl}`}>
             Your browser does not support videos.
           </video>
         </div>
@@ -29,7 +29,7 @@ export const VideoCarousel = React.createClass({
     });
     
     const firstPage = <div><div className="sliderow"> { renderCategories.slice(0,6) }</div></div>;
-    const secondPage = categories.length > 6 ? <div><div className="sliderow"> { renderCategories.slice(6,12) }</div></div> : [];
+    const secondPage = videos.length > 6 ? <div><div className="sliderow"> { renderCategories.slice(6,12) }</div></div> : [];
     
     const playVideo = e => e.play();
   

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 import { PhotoCarousel } from './photos/CommissionedPhotos';
 import { VideoCarousel } from './videos/Commissionedvideos';
@@ -51,17 +52,16 @@ export default React.createClass({
         <h1>Commissioned Work</h1>
         
         <div className="work-menu">
-          <p style={ displayPhotos ? selectedStyle : null } onClick={ setChoice }>Photos</p>
-          <p style={ displayVideos ? selectedStyle : null } onClick={ setChoice }>Videos</p>
+          <Link to="/commissionedWork/photos"><p style={ displayPhotos ? selectedStyle : null } onClick={ setChoice }>Photos</p></Link>
+          <Link to="/commissionedWork/videos"><p style={ displayVideos ? selectedStyle : null } onClick={ setChoice }>Videos</p></Link>
         </div>
         
         <Transition component="div" transitionName="fadeFast" transitionAppear={false} transitionAppearTimeout={0}
                     transitionEnterTimeout={0} transitionLeave={false}>
-          
-          { displayPhotos && <PhotoCarousel categories={ photoCategories }/> }
-          { displayVideos && <VideoCarousel categories={ videoCategories } /> }
+  
           { this.props.children && React.cloneElement(this.props.children, {
-            photos : "??"
+            photos : photoCategories,
+            videos : videoCategories
           }) }
           
 
