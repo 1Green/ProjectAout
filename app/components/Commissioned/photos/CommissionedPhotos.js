@@ -1,5 +1,7 @@
 import React from 'react';
 import Slider from 'react-slick';
+import Transition from 'react-addons-css-transition-group';
+
 import { Link, withRouter } from 'react-router';
 
 export const PhotoCarousel =
@@ -32,6 +34,7 @@ export const PhotoCarousel =
     
     
     return (
+      <Transition transitionName="fadeFast" transitionAppear={true} transitionAppearTimeout={0} transitionEnterTimeout={0} transitionLeave={false}>
       
       <Slider { ...settings }>
         
@@ -39,6 +42,7 @@ export const PhotoCarousel =
         { secondPage }
         
       </Slider>
+        </Transition>
     );
   }
 });

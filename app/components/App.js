@@ -6,15 +6,11 @@ export const App = React.createClass({
   render() {
     return (
       <div>
-        <Navbar/>
-        <RouteTransition className="home-full-container"
-          pathname={this.props.location.pathname}
-          atEnter={{ opacity: 0 }}
-          atLeave={{ opacity: 1 }}
-          atActive={{ opacity: 1 }}
-        >
+        <Navbar/><div className="home-full-container">
+
+        
         <div>{ this.props.children }</div>
-        </RouteTransition>
+      </div>
       </div>
     );
   }

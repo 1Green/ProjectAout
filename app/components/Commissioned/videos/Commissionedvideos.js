@@ -1,5 +1,6 @@
 import React from 'react';
 import Slider from 'react-slick';
+import Transition from 'react-addons-css-transition-group';
 
 export const VideoCarousel = React.createClass({
   
@@ -37,6 +38,7 @@ export const VideoCarousel = React.createClass({
     
     
     return (
+      <Transition transitionName="fadeFast" transitionAppear={true} transitionAppearTimeout={0} transitionEnterTimeout={0} transitionLeave={false}>
       
       <Slider { ...settings }>
         
@@ -44,6 +46,8 @@ export const VideoCarousel = React.createClass({
         { secondPage }
       
       </Slider>
+        
+        </Transition>
     );
   }
 });

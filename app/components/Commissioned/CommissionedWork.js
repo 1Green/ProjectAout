@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router';
+import { RouteTransition } from 'react-router-transition';
 
 import { PhotoCarousel } from './photos/CommissionedPhotos';
 import { VideoCarousel } from './videos/Commissionedvideos';
-import Transition from 'react-addons-css-transition-group';
+
 
 export default React.createClass({
   
@@ -52,12 +53,16 @@ export default React.createClass({
         <h1>Commissioned Work</h1>
         
         <div className="work-menu">
-          <Link to="/commissionedWork/photos"><p style={ displayPhotos ? selectedStyle : null } onClick={ setChoice }>Photos</p></Link>
-          <Link to="/commissionedWork/videos"><p style={ displayVideos ? selectedStyle : null } onClick={ setChoice }>Videos</p></Link>
+          <Link to="/CommissionedWork/photos"><p style={ displayPhotos ? selectedStyle : null } onClick={ setChoice }>Photos</p></Link>
+          <Link to="/CommissionedWork/videos"><p style={ displayVideos ? selectedStyle : null } onClick={ setChoice }>Videos</p></Link>
         </div>
-        
-        <Transition component="div" transitionName="fadeFast" transitionAppear={false} transitionAppearTimeout={0}
-                    transitionEnterTimeout={0} transitionLeave={false}>
+  
+  
+        <RouteTransition pathname={this.props.location.pathname}
+                         atEnter={{ opacity: 0 }}
+                         atLeave={{ opacity: 1 }}
+                         atActive={{ opacity: 1 }}
+        >
   
           { this.props.children && React.cloneElement(this.props.children, {
             photos : photoCategories,
@@ -65,7 +70,7 @@ export default React.createClass({
           }) }
           
 
-        </Transition>
+        </RouteTransition>
         
         
       </div>
