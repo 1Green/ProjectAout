@@ -1,7 +1,6 @@
 import React from 'react';
 import Slider from 'react-slick';
 import Transition from 'react-addons-css-transition-group';
-
 import { read } from '../../../utils/methods';
 
 export default React.createClass({
@@ -12,7 +11,7 @@ export default React.createClass({
   
     var settings = {
       dots: false,
-      infinite: false,
+      infinite: true,
       slidesToShow: 1,
       slidesToScroll: 1,
       draggable: true,

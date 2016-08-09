@@ -21,6 +21,7 @@ export const PhotoCarousel = withRouter(
       className: "photo-menu"
     };
     
+    
     const renderCategories = photos.map((category, index) => {
       
       return (

@@ -39,16 +39,16 @@ export default React.createClass({
       
       <div className="work-container">
   
-        <Link to="/CommissionedWork/photos"><h1>Commissioned Work</h1></Link>
-        
-        { !this.props.children.props.children &&
+        <Link to="/CommissionedWork/photos">
+          <h1>
+            Commissioned Work
+          </h1>
+        </Link>
         
         <div className="work-menu">
           <Link to="/CommissionedWork/photos"> <p style={ isPhotoSelected ? selectedStyle : null } >Photos</p> </Link>
           <Link to="/CommissionedWork/videos"> <p style={ isVideoSelected ? selectedStyle : null } >Videos</p> </Link>
         </div>
-        
-        }
         
         <RouteTransition pathname={this.props.location.pathname}
                          atEnter={{ opacity: 0 }}

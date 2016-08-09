@@ -10,6 +10,7 @@ import { PhotoCarousel } from '../components/Commissioned/photos/CommissionedPho
 import PhotoSerie from '../components/Commissioned/photos/PhotoSerie';
 
 import { VideoCarousel } from '../components/Commissioned/videos/Commissionedvideos.js'
+import { videoPlayer } from '../components/Commissioned/videos/videoPlayer'
 
 export const Routes = (
   
@@ -32,7 +33,7 @@ export const Routes = (
         </Route>
         
         <Route path="videos" component={ VideoCarousel }>
-          <Route path="/CommissionedWork/videos/:series" />
+          <Route path="/CommissionedWork/videos/:video" component={ videoPlayer }/>
         </Route>
         
         
