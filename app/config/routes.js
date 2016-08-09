@@ -32,7 +32,7 @@ export const Routes = (
         </Route>
         
         <Route path="videos" component={ VideoCarousel }>
-          {/*<Route path="/CommissionedWork/videos/:series" component={ PhotoSerie }/>*/}
+          <Route path="/CommissionedWork/videos/:series" />
         </Route>
         
         

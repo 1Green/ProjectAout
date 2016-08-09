@@ -1,4 +1,7 @@
 import React from 'react';
+import Slider from 'react-slick';
+import Transition from 'react-addons-css-transition-group';
+
 import { read } from '../../../utils/methods';
 
 export default React.createClass({
@@ -6,6 +9,15 @@ export default React.createClass({
   render() {
     
     const { photos, params } = this.props;
+  
+    var settings = {
+      dots: false,
+      infinite: false,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      draggable: true,
+      className: "photo-full-carousel"
+    };
     
     const gallery = photos.filter((category) => {
       return category.coverTitle === params.series
@@ -14,17 +26,27 @@ export default React.createClass({
     const coverTitle = read(gallery,'coverTitle');
     const galleryImages = read(gallery,'images') || [];
     
+    const photoSerie = galleryImages.map((images) => {
+      return( <div className="sliderow">
+          <img src={`/commissionedWork/${images.url}`} alt={`/commissionedWork/${images.title}`} />
+          <h3>{images.title}</h3>
+        </div>
+      )
+    });
+    
     return(
       
-      <div>
-        <div>{ coverTitle }</div>
-        
-        { galleryImages.map((images) => {
-          return <img src={`/commissionedWork/${images.url}`} alt=""/>
-        })
+      <Transition transitionName="fadeFast" transitionAppear={true} transitionAppearTimeout={0} transitionEnterTimeout={0} transitionLeave={false}>
   
-        }
-      </div>
+        <div className="coverTitle">{ coverTitle }</div>
+        
+        <Slider { ...settings }>
+          
+            { photoSerie }
+          
+        </Slider>
+        
+      </Transition>
     )
   }
   

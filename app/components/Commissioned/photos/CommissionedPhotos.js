@@ -2,7 +2,7 @@ import React from 'react';
 import Slider from 'react-slick';
 import Transition from 'react-addons-css-transition-group';
 
-import { Link, withRouter } from 'react-router';
+import { withRouter } from 'react-router';
 
 export const PhotoCarousel = withRouter(
   
@@ -39,27 +39,13 @@ export const PhotoCarousel = withRouter(
     const secondPage = photos.length > 6 ? <div><div className="sliderow"> { renderCategories.slice(6,12) }</div></div> : [];
     const renderPages = <div>{ firstPage } { secondPage }</div>;
     
-    
-    
-    
     return (
       
       <Transition transitionName="fadeFast" transitionAppear={true} transitionAppearTimeout={0} transitionEnterTimeout={0} transitionLeave={false}>
-          <div>
-          </div>
-      
-        <Slider { ...settings }>
-          
-          { !this.props.children ? renderPages :
-            
-            <div> { this.props.children && React.cloneElement(this.props.children, {
-            photos : photos })
-              
-            } </div>
-          
-          }
-          
-        </Slider>
+        
+        { !this.props.children && <Slider { ...settings }>{ renderPages }</Slider> }
+  
+        {  <div> { this.props.children && React.cloneElement(this.props.children, { photos : photos }) } </div> }
         
       </Transition>
     );

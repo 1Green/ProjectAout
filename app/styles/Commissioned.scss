@@ -2,16 +2,25 @@
 
 .work-container{
 
-  margin-top: 30px;
-  height:85vh;
+  margin-top: 60px;
+  height:95vh;
   display:flex;
   flex-flow:column nowrap;
   text-align: center;
+  //background-image: url('../img/mainback4.jpg');
   box-shadow: 0 0 1600px 50px #000;
+  overflow-wrap: break-word;
+
 
   h1{
-    margin-top: 50px;
+    margin: 50px 0 0 0;
     font-size:3em;
+    transition: color .5s ease-in-out;
+
+    &:hover {
+      color:white;
+      transition: color .5s ease-in-out;
+    }
   }
 
   .work-menu{
@@ -19,7 +28,7 @@
     flex-flow:row wrap;
     width:20%;
     justify-content: center;
-    margin:40px 0 20px 0;
+    margin:40px 0 40px 0;
     align-self:center;
 
     p{

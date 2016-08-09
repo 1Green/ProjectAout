@@ -2,15 +2,10 @@ import React from 'react';
 import { Link } from 'react-router';
 import { RouteTransition } from 'react-router-transition';
 
-import { PhotoCarousel } from './photos/CommissionedPhotos';
-import { VideoCarousel } from './videos/Commissionedvideos';
-
-
 export default React.createClass({
   
   getInitialState(){
     return {
-      selection: "Photos",
       photoCategories: [],
       videoCategories: []
     }
@@ -34,30 +29,27 @@ export default React.createClass({
   
   render(){
     
-    const { selection, photoCategories, videoCategories } = this.state;
-    const setChoice = (e) => {
-      const item = e.target.innerHTML;
-      this.setState({
-        selection: item
-      })
-    };
+    const { photoCategories, videoCategories } = this.state;
     
-    const displayPhotos = selection == "Photos" && photoCategories.length ;
-    const displayVideos = selection == "Videos" && videoCategories.length;
+    const isPhotoSelected = this.props.location.pathname.includes('photos');
+    const isVideoSelected = this.props.location.pathname.includes('videos');
     const selectedStyle = {transform: "scale(1.3)", color:"white"};
     
     return (
       
       <div className="work-container">
+  
+        <Link to="/CommissionedWork/photos"><h1>Commissioned Work</h1></Link>
         
-        <h1>Commissioned Work</h1>
+        { !this.props.children.props.children &&
         
         <div className="work-menu">
-          <Link to="/CommissionedWork/photos"><p style={ displayPhotos ? selectedStyle : null } onClick={ setChoice }>Photos</p></Link>
-          <Link to="/CommissionedWork/videos"><p style={ displayVideos ? selectedStyle : null } onClick={ setChoice }>Videos</p></Link>
+          <Link to="/CommissionedWork/photos"> <p style={ isPhotoSelected ? selectedStyle : null } >Photos</p> </Link>
+          <Link to="/CommissionedWork/videos"> <p style={ isVideoSelected ? selectedStyle : null } >Videos</p> </Link>
         </div>
-  
-  
+        
+        }
+        
         <RouteTransition pathname={this.props.location.pathname}
                          atEnter={{ opacity: 0 }}
                          atLeave={{ opacity: 1 }}
@@ -69,9 +61,7 @@ export default React.createClass({
             videos : videoCategories
           }) }
           
-
         </RouteTransition>
-        
         
       </div>
     )
