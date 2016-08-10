@@ -11,8 +11,6 @@ export const videoPlayer = React.createClass({
     const video = videos.filter((video) => {
       return video.title === params.video
     })[0];
-  
-    console.log(video);
     
     return(
   

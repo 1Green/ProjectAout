@@ -3,7 +3,7 @@ import Slider from 'react-slick';
 import Transition from 'react-addons-css-transition-group';
 import { read } from '../../../utils/methods';
 
-export default React.createClass({
+export const PhotoSerie = React.createClass({
   
   render() {
     

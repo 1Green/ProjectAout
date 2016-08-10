@@ -22,8 +22,8 @@ export const Home = React.createClass({
                       </div>;
   
     const menu = <div className='pro-perso'>
-                  <Link to="/PersonalWork/"> <div className="menu menu-pro">Personal Work</div></Link>
                   <Link to="/CommissionedWork/"> <div className="menu menu-perso">Commissioned Work</div></Link>
+                  <Link to="/PersonalWork/"> <div className="menu menu-pro">Personal Work</div></Link>
                 </div>;
     
     return (

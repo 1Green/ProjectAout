@@ -6,8 +6,8 @@ export default React.createClass({
     
     return(
       <header className='navbar' >
-        <Link to="/"><p>Hello</p></Link>
-        <p>Goodbye</p>
+        <Link to="/"><p>Home</p></Link>
+        <Link to="/admin/"><p>Admin</p></Link>
       </header>
     )
   }

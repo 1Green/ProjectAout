@@ -1,6 +1,7 @@
 @import './reset.scss';
 @import './transitions.scss';
 @import './Commissioned.scss';
+@import './Admin.scss';
 
 body{
   overflow-x:hidden;
@@ -34,21 +35,20 @@ body{
   width:100vw;
   height: 100vh;
   background-image: url('../img/mainback4.jpg')!important;
-  //background-color:rgba(200,200,200,0.1)!important;
-  //background-blend-mode: screen!important;
   background-size: cover;
   display: flex;
   flex-flow: column nowrap;
   justify-content:flex-start;
-  padding:50px 50px;
+  align-items: center;
+  //padding:50px 50px;
   font-size:1.1em;
 
   .menu-container{
     padding:200px 0;
-    //box-shadow: 0 0 1600px 50px #000;
     display:flex;
     flex-flow:column wrap;
     align-items:center;
+    text-align: center;
   }
 }
 
@@ -59,7 +59,11 @@ body{
   h1 {
     font-weight: 600;
     font-size: 4em;
-    margin-bottom:40px;
+    margin-bottom:80px;
+  }
+  p{
+    font-size:1.2em;
+    font-weight: 400;
   }
 }
 
@@ -73,6 +77,7 @@ body{
 
   .menu {
     display: flex;
+    font-size:1.5em;
     justify-content: center;
     align-items: center;
     margin: 10px 10px;

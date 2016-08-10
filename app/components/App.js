@@ -7,6 +7,7 @@ export const App = React.createClass({
     return (
       
       <div>
+        
         <Navbar/>
         
         <div className="home-full-container">
