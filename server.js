@@ -5,6 +5,7 @@ const express = require('express');
 const webpack = require('webpack');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const fileUpload = require('express-fileupload');
 
 const webpackMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
@@ -14,9 +15,11 @@ const isDeveloping = process.env.NODE_ENV !== 'production';
 const port = isDeveloping ? 3000 : process.env.PORT;
 const app = express();
 
+
 mongoose.connect('mongodb://localhost/API');
 app.use(bodyParser.urlencoded( { extended:true } ));
 app.use(bodyParser.json());
+app.use(fileUpload());
 
 if (isDeveloping) {
   const compiler = webpack(config);
@@ -62,15 +65,46 @@ if (isDeveloping) {
   
   // ROUTES
   
+  
+  app.post('/uploadCommissionedPhoto', function(req, res) {
+    var fileArray = [];
+    
+    // if (!req.files) {
+    //   res.send('No files were uploaded.');
+    //   return;
+    // }
+    
+    for (var file in req.files){
+      if(req.files.hasOwnProperty(file)) fileArray.push(req.files[file])
+    }
+    
+  
+    fileArray.forEach((file) => file.mv(path.join(__dirname,`/app/data/commissionedWork/photos/${file.name}`), (err) => {
+      err ? console.log("ERROR", err) : console.log(file.name);
+    }));
+    
+      // res.write(middleware.fileSystem.readFileSync(path.join(__dirname, 'dist/index.html')));
+      // res.end();
+  
+    var category = new commissionedWorkImages(req.body);
+  
+    category.save(function(err) {
+      if (err) {
+        return res.send(err);
+      }
+  
+      res.write(middleware.fileSystem.readFileSync(path.join(__dirname, 'dist/index.html')));
+      res.end();
+      
+    });
+    
+  });
+  
+  
   app.get('*', function response(req, res) {
     res.write(middleware.fileSystem.readFileSync(path.join(__dirname, 'dist/index.html')));
     res.end();
   });
-  
-  
-  
-  
-  
   
   
   

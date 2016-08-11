@@ -53,6 +53,8 @@ export const Routes = (
       </Route>
       
     </Route>
-  
+    
+    <Redirect from="/uploadCommissionedPhoto" to="/admin/commissionedwork/photos" />
+      
   </Router>
 );
