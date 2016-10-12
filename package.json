@@ -12,7 +12,7 @@
     "webpack",
     "node"
   ],
-  "author": "Christian Alfoni",
+  "author": "Christian Alfon",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/christianalfoni/webpack-express-boilerplate/issues"
