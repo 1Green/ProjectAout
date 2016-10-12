@@ -17,13 +17,12 @@ const isDeveloping = process.env.NODE_ENV !== 'production';
 const port = isDeveloping ? 3000 : process.env.PORT;
 const app = express();
 
-
-mongoose.connect('mongodb://localhost/API');
 app.use(bodyParser.urlencoded( { extended:true } ));
 app.use(bodyParser.json());
 app.use(fileUpload());
 
 if (isDeveloping) {
+  mongoose.connect('mongodb://localhost/API');
   const compiler = webpack(config);
   const middleware = webpackMiddleware(compiler, {
     publicPath: config.output.publicPath,
@@ -138,9 +137,10 @@ if (isDeveloping) {
   
   
 } else {
+
   
   app.use(express.static(__dirname + '/dist'));
-  
+  mongoose.connect('mongodb://heroku_d1c60rjq:sfq0ru8rn75mrrjq24sqtgp741@ds057066.mlab.com:57066/heroku_d1c60rjq')
   app.get('*', function response(req, res) {
     res.sendFile(path.join(__dirname, 'dist/index.html'));
   });
