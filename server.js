@@ -20,6 +20,11 @@ const app = express();
 app.use(bodyParser.urlencoded( { extended:true } ));
 app.use(bodyParser.json());
 app.use(fileUpload());
+app.use(middleware);
+app.use(webpackHotMiddleware(compiler));
+app.use(express.static(__dirname + '/app/data'));
+
+
 
 if (isDeveloping) {
   mongoose.connect('mongodb://localhost/API');
@@ -41,9 +46,7 @@ if (isDeveloping) {
   // DEV USES
 
   
-  app.use(middleware);
-  app.use(webpackHotMiddleware(compiler));
-  app.use(express.static(__dirname + '/app/data'));
+
   
   
   // API CONFIG
