@@ -57,15 +57,6 @@
 }
 
 
-
-
-
-
-
-
-
-
-
 /* Fold top */
 
 .foldTop-appear {
@@ -99,4 +90,26 @@
   position: relative;
   top:-2000px;
   transition: all 300ms ease-in;
+}
+
+/* Drop and turn red */
+
+@keyframes dropAndRed {
+  0% { top: -50px }
+  40% { top: 10px }
+  100% {
+    top: 10px;
+    color: #ff683e;
+    transform: rotateX(-180deg);
+  }
+}
+
+@keyframes dropAndBlue {
+  0% { top: -50px }
+  40% { top: 10px }
+  100% {
+    top: 10px;
+    color: #00c3f5;
+    transform: rotateX(-180deg);
+  }
 }

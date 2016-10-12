@@ -5,7 +5,7 @@
     display: flex;
     margin-bottom:20px;
     flex-flow: row wrap;
-    padding: 0 3%;
+    padding: 0 2%;
     height: 60vh;
     justify-content: center;
     align-items: center;
@@ -15,29 +15,29 @@
 
     div {
       max-width: 700px;
-      flex:1 1 450px;
-      color:white;
-      min-height:280px;
-      box-shadow:0 0 8px 1px #000;
-      margin:25px;
+      flex: 1 1 350px;
+      color: white;
+      min-height: 280px;
+      box-shadow: 0 0 8px 1px #000;
+      margin: 25px;
       display: flex;
-      justify-content:center;
-      align-items:center;
+      justify-content: center;
+      align-items: center;
     }
 
     .photo-container {
 
       background-size: cover;
       background-position: center;
-      background-color:rgba(0,0,0,0);
-      font-size:80%;
+      background-color: rgba(0,0,0,0);
+      font-size: 80%;
       transition: background-color 1s ease, font-size 1s ease;
 
       &:hover {
-        background-color:rgba(0,0,0,0.5);
+        background-color: rgba(0,0,0,0.5);
         background-blend-mode: darken;
         transition: background-color 0.5s ease, font-size 0.5s ease;
-        font-size:100%;
+        font-size: 100%;
       }
     }
   }
@@ -47,7 +47,7 @@
 
   .sliderow {
     display: flex;
-    margin-bottom:20px;
+    margin-bottom: 20px;
     flex-flow: row wrap;
     padding: 0 3%;
     height: 60vh;
@@ -60,13 +60,13 @@
     div {
 
       max-width: 600px;
-      flex:1 1 450px;
-      color:white;
-      margin:25px;
+      flex: 1 1 450px;
+      color: white;
+      margin: 25px;
       display: flex;
-      justify-content:center;
-      align-items:center;
-      position:relative;
+      justify-content: center;
+      align-items: center;
+      position: relative;
 
       color:rgba(255,255,255,1);
       transition: all 0.5s ease;
@@ -75,8 +75,8 @@
       &:hover {
 
         transition: all 0.5s ease;
-        font-size:90%;
-        color:rgba(255,255,255,0);
+        font-size: 90%;
+        color: rgba(255,255,255,0);
         text-shadow: none;
 
       }

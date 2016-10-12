@@ -1,19 +1,19 @@
 import React from 'react';
 import { CreateGallery } from './CreateGallery';
-import { DeleteGallery } from './DeleteGallery';
+import { ModifyGallery } from './ModifyGallery';
 
 export const AdminPhotos = React.createClass({
   
   getInitialState(){
     return {
       createSelected: false,
-      deleteSelected: false
+      modifySelected: false
     }
   },
   
   render(){
     
-    const { createSelected, deleteSelected } = this.state;
+    const { createSelected, modifySelected } = this.state;
   
     const selectedStyle = {transform: "scale(1.1)", color:"white"};
    
@@ -24,23 +24,28 @@ export const AdminPhotos = React.createClass({
         
         <div className="admin-photo-menu">
        
-          <h2 onClick={() => this.setState({createSelected: true, deleteSelected: false})}
+          <h2 onClick={() => this.setState({createSelected: true, modifySelected: false})}
               style={ createSelected ? selectedStyle : null}>
             Create Gallery
           </h2>
        
-          <h2 onClick={() => this.setState({createSelected: false, deleteSelected: true})}
-              style={ deleteSelected ? selectedStyle : null}>
-            Delete Gallery
+          <h2 onClick={() => this.setState({createSelected: false, modifySelected: true})}
+              style={ modifySelected ? selectedStyle : null}>
+            Modify Gallery
           </h2>
         
         </div>
         
+        { (createSelected || modifySelected) &&
+        
         <div className="edit-container">
         
           { createSelected && <CreateGallery/> }
-          { deleteSelected && <DeleteGallery/> }
+          { modifySelected && <ModifyGallery/> }
+          
         </div>
+  
+        }
         
       </div>
       

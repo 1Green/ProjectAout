@@ -30,21 +30,20 @@ export const PhotoCarousel = withRouter(
               key={index}
               style={{ backgroundImage:`url(/commissionedWork/${ category.coverUrl })`}}>
               
-               { category.coverTitle.toUpperCase() }
+               { category.coverTitle && category.coverTitle.replace(/_/g," ").toUpperCase() }
          
          </div>
       )
     });
     
-    const firstPage = <div><div className="sliderow"> { renderCategories.slice(0,6) }</div></div>;
-    const secondPage = photos.length > 6 ? <div><div className="sliderow"> { renderCategories.slice(6,12) }</div></div> : [];
-    const renderPages = <div>{ firstPage } { secondPage }</div>;
+    const firstPage = <div key="first-page" className="sliderow"> { renderCategories.slice(0,6) }</div>;
+    const secondPage = photos.length > 6 ?<div key="second-page" className="sliderow"> { renderCategories.slice(6,12) }</div> : [];
     
     return (
       
       <Transition transitionName="fadeFast" transitionAppear={true} transitionAppearTimeout={0} transitionEnterTimeout={0} transitionLeave={false}>
         
-        { !this.props.children && <Slider { ...settings }>{ renderPages }</Slider> }
+        { !this.props.children && <Slider { ...settings }>{ firstPage }{ secondPage }</Slider> }
   
         {  <div> { this.props.children && React.cloneElement(this.props.children, { photos : photos }) } </div> }
         

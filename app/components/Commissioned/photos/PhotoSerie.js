@@ -15,7 +15,7 @@ export const PhotoSerie = React.createClass({
       slidesToShow: 1,
       slidesToScroll: 1,
       draggable: true,
-      className: "photo-full-carousel"
+      className: "photo-full-carousel",
     };
     
     const gallery = photos.filter((category) => {
@@ -37,7 +37,7 @@ export const PhotoSerie = React.createClass({
       
       <Transition transitionName="fadeFast" transitionAppear={true} transitionAppearTimeout={0} transitionEnterTimeout={0} transitionLeave={false}>
   
-        <div className="coverTitle">{ coverTitle }</div>
+        <div className="coverTitle">{ coverTitle.replace(/_/g, " ") }</div>
         
         <Slider { ...settings }>
           

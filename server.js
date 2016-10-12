@@ -5,6 +5,7 @@ const express = require('express');
 const webpack = require('webpack');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const mkdirp = require('mkdirp');
 const fileUpload = require('express-fileupload');
 
 const webpackMiddleware = require('webpack-dev-middleware');
@@ -37,8 +38,6 @@ if (isDeveloping) {
   });
   
   
-  
-  
   // DEV USES
 
   
@@ -67,37 +66,56 @@ if (isDeveloping) {
   
   
   app.post('/uploadCommissionedPhoto', function(req, res) {
+   
     var fileArray = [];
-    
-    // if (!req.files) {
-    //   res.send('No files were uploaded.');
-    //   return;
-    // }
-    
-    for (var file in req.files){
-      if(req.files.hasOwnProperty(file)) fileArray.push(req.files[file])
+    const coverTitle = req.body.coverTitle.replace(/ /g,"_");
+  
+    mkdirp(path.join(__dirname,`/app/data/commissionedWork/photos/${coverTitle}`), function (err) {
+      if (err) console.error('MKDIR ERR:', err);
+      else console.log('MKDIR OK', coverTitle);
+    });
+
+    for (let file in req.files){
+      if(req.files.hasOwnProperty(file) && req.files[file].data) fileArray.push(req.files[file]);
     }
     
-  
-    fileArray.forEach((file) => file.mv(path.join(__dirname,`/app/data/commissionedWork/photos/${file.name}`), (err) => {
-      err ? console.log("ERROR", err) : console.log(file.name);
-    }));
+    fileArray.forEach(
+      file => {
+        file.mv(
+          path.join(__dirname, `/app/data/commissionedWork/photos/${coverTitle}/${file.name}`),
+          err => {
+            err ? console.log("MV ERR ", err) : console.log('MV OK:', file.name);
+          });
+      });
     
-      // res.write(middleware.fileSystem.readFileSync(path.join(__dirname, 'dist/index.html')));
-      // res.end();
+    const titles = Object.keys(req.body).map( prop =>  prop.startsWith('title') ? req.body[prop] : null );
+    const imageData = fileArray
+      .map( (file, index) =>
+        ({ title: titles[index],
+           url: `photos/${coverTitle}/${file.name}` }))
+      .slice(1, fileArray.length-1);
   
-    var category = new commissionedWorkImages(req.body);
-  
-    category.save(function(err) {
+    var category = new commissionedWorkImages({
+      coverTitle: coverTitle,
+      coverUrl: `photos/${coverTitle}/${fileArray[0].name}`,
+      images: [...imageData]
+    });
+
+    category.save(err => {
       if (err) {
-        return res.send(err);
+        return res.send('DB SAVE ERR: ', err);
       }
-  
+    });
+
       res.write(middleware.fileSystem.readFileSync(path.join(__dirname, 'dist/index.html')));
       res.end();
-      
-    });
     
+  });
+  
+  
+  
+  app.post('/admin/commissionedwork/photos', function(req, res) {
+    console.log('test', req.body);
   });
   
   

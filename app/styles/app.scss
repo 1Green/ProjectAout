@@ -2,13 +2,15 @@
 @import './transitions.scss';
 @import './Commissioned.scss';
 @import './Admin.scss';
+@import './font-awesome-4.6.3/scss/font-awesome.scss';
 
 body{
   overflow-x:hidden;
+  font-family:sans-serif;
 }
 
 * {
-  font-family:sans-serif!important;
+
 }
 
 ::-webkit-scrollbar {
