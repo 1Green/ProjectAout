@@ -142,7 +142,7 @@ if (isDeveloping) {
   mongoose.connect('mongodb://heroku_d1c60rjq:sfq0ru8rn75mrrjq24sqtgp741@ds057066.mlab.com:57066/heroku_d1c60rjq')
   app.get('*', function response(req, res) {
     console.log('DIRDIRDIRDIRDIRDIRDIRDIRDIRDIRDIRDIRDIRDIRIDRIDIRDIRIDIRIDIRID', __dirname)
-    res.sendFile(path.join(__dirname, 'dist/index.html'));
+    res.sendFile('dist/index.html');
   });
   
 }
