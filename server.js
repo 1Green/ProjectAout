@@ -126,12 +126,13 @@ if (isDeveloping) {
   
 } else {
 
-  app.use(express.static(__dirname + 'index.tpl.html'));
+  app.use(express.static(__dirname + '/dist'));
   mongoose.connect('mongodb://heroku_d1c60rjq:sfq0ru8rn75mrrjq24sqtgp741@ds057066.mlab.com:57066/heroku_d1c60rjq')
   app.get('*', function response(req, res) {
-    console.log('DIRDIRDIRDIRDIRDIRDIRDIRDIRDIRDIRDIRDIRDIRIDRIDIRDIRIDIRIDIRID', path.join(__dirname, 'index.tpl.html'))
-    res.sendFile(path.join(__dirname, 'index.tpl.html'));
+    console.log('DIRDIRDIRDIRDIRDIRDIRDIRDIRDIRDIRDIRDIRDIRIDRIDIRDIRIDIRIDIRID', __dirname)
+    res.sendFile(path.join(__dirname, 'dist/index.html'));
   });
+  
 }
 
 app.listen(port, '0.0.0.0', function onStart(err) {
