@@ -171,7 +171,7 @@ if (isDeveloping) {
     // });
     
     const dirName = path.join(__dirname,`/app/data/commissionedWork/photos/${coverTitle}`);
-    fs.mkdirSync(dirName, function(err){ console.log('--------------------------------');console.log('CALLBACK', err); console.log('--------------------------------');});
+    fs.mkdirSync(dirName);
     
     for (let file in req.files){
       if(req.files.hasOwnProperty(file) && req.files[file].data) fileArray.push(req.files[file]);
