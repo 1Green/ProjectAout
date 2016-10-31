@@ -33,7 +33,7 @@ export default React.createClass({
     
     const isPhotoSelected = this.props.location.pathname.includes('photos');
     const isVideoSelected = this.props.location.pathname.includes('videos');
-    const selectedStyle = {transform: "scale(1.3)", color:"red"};
+    const selectedStyle = {transform: "scale(1.3)", color:"white"};
     
     return (
       

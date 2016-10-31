@@ -165,13 +165,13 @@ if (isDeveloping) {
     var fileArray = [];
     const coverTitle = req.body.coverTitle.replace(/ /g,"_");
     
-    mkdirp(path.join(__dirname,`/data/commissionedWork/photos/${coverTitle}`), function (err) {
-      if (err) console.error('MKDIR ERR:', err);
-      else console.log('MKDIR OK', coverTitle);
-    });
+    // mkdirp(path.join(__dirname,`/data/commissionedWork/photos/${coverTitle}`), function (err) {
+    //   if (err) console.error('MKDIR ERR:', err);
+    //   else console.log('MKDIR OK', coverTitle);
+    // });
     
-    // const dirName = path.join(__dirname,`/app/data/commissionedWork/photos/${coverTitle}`);
-    // fs.mkdirSync('test', function(err){ console.log('CALLBACK', err)});
+    const dirName = path.join(__dirname,`/app/data/commissionedWork/photos/${coverTitle}`);
+    fs.mkdirSync(dirName, function(err){ console.log('--------------------------------');console.log('CALLBACK', err); console.log('--------------------------------');});
     
     for (let file in req.files){
       if(req.files.hasOwnProperty(file) && req.files[file].data) fileArray.push(req.files[file]);
