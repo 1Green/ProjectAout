@@ -13,13 +13,13 @@ export default React.createClass({
   
   componentWillMount(){
     
-    fetch('http://localhost:3000/API/commissionedWorkImages/')
+    fetch('https://sleepy-bayou-41277.herokuapp.com/API/commissionedWorkImages')
       .then(data => data.json())
       .then(data => this.setState({
         photoCategories: data
       }));
   
-    fetch('http://localhost:3000/API/commissionedWorkVideos/')
+    fetch('https://sleepy-bayou-41277.herokuapp.com/API/commissionedWorkVideos')
       .then(data => data.json())
       .then(data => this.setState({
         videoCategories: data

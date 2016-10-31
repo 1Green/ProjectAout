@@ -158,12 +158,14 @@ if (isDeveloping) {
    ****************************/
   
   app.post('/uploadCommissionedPhoto', function(req, res) {
-    console.log('---------------------------------------------------------------------------------------------------------------')
+    console.log('--------------------------------');
+    console.log(req.body.coverTitle);
+    console.log('--------------------------------');
     
     var fileArray = [];
     const coverTitle = req.body.coverTitle.replace(/ /g,"_");
     
-    mkdirp(path.join(__dirname,`/app/data/commissionedWork/photos/${coverTitle}`), function (err) {
+    mkdirp(path.join(__dirname,`/data/commissionedWork/photos/${coverTitle}`), function (err) {
       if (err) console.error('MKDIR ERR:', err);
       else console.log('MKDIR OK', coverTitle);
     });
