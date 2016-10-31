@@ -57,30 +57,30 @@ export const CreateGallery = React.createClass({
       )
     });
     
-    return(
-      <form ref='uploadForm'
-            id='uploadForm'
-            action='http://localhost:3000/uploadCommissionedPhoto'
-            method='post'
-            encType="multipart/form-data"
-      >
-        
-        <div className="input-line cover-line">
-          <input type="text" name="coverTitle" placeholder="Cover Title" required autoFocus="true" autoComplete="off"/>
-          <input type="file" name="coverUrl" placeholder="Cover Url" id="cover-file" onChange={ (e) => this.isEmpty(e) }/>
-          <label htmlFor="cover-file">
-            Choose a cover
-          </label>
-        </div>
-        
-        { inputs }
-        
-        <br/>
-        
-        <input type='submit' value='Upload!' />
-      
-      </form>
-    )
+      return(
+          <form ref='uploadForm'
+                id='uploadForm'
+                action='https://sleepy-bayou-41277.herokuapp.com/uploadCommissionedPhoto'
+                method='post'
+                encType="multipart/form-data"
+          >
+            
+            <div className="input-line cover-line">
+              <input type="text" name="coverTitle" placeholder="Cover Title" required autoFocus="true" autoComplete="off"/>
+              <input type="file" name="coverUrl" placeholder="Cover Url" id="cover-file" onChange={ (e) => this.isEmpty(e) }/>
+              <label htmlFor="cover-file">
+                Choose a cover
+              </label>
+            </div>
+            
+            { inputs }
+            
+            <br/>
+            
+            <input type='submit' value='Upload!' />
+          
+          </form>
+      )
   }
 });
 
