@@ -2,6 +2,7 @@
 "use strict"
 
 const path = require('path');
+const fs = require('fs');
 const express = require('express');
 const webpack = require('webpack');
 const mongoose = require('mongoose');
@@ -69,7 +70,7 @@ if (isDeveloping) {
    
     var fileArray = [];
     const coverTitle = req.body.coverTitle.replace(/ /g,"_");
-  
+    
     mkdirp(path.join(__dirname,`/app/data/commissionedWork/photos/${coverTitle}`), function (err) {
       if (err) console.error('MKDIR ERR:', err);
       else console.log('MKDIR OK', coverTitle);
@@ -124,17 +125,40 @@ if (isDeveloping) {
     res.end();
   });
   
+  
+  /************************
+   ****** PRODUCTION ******
+   ************************/
+  
+  
 } else {
+  
+  app.use(express.static(__dirname + '/app/data'));
+  
+  // API CONFIG
+  
+  
+  //Commissioned Work Images
+  
+  const commissionedWorkImages = require('./models/commissionedWorkImages');
+  commissionedWorkImages.methods(['get', 'put', 'post', 'delete']);
+  commissionedWorkImages.register(app, '/API/commissionedWorkImages');
+  
+  //Commissioned Work Videos
+  
+  const commissionedWorkVideos = require('./models/commissionedWorkVideos');
+  commissionedWorkVideos.methods(['get', 'put', 'post', 'delete']);
+  commissionedWorkVideos.register(app, '/API/commissionedWorkVideos');
 
   app.use(express.static(__dirname + '/dist'));
   mongoose.connect('mongodb://heroku_d1c60rjq:sfq0ru8rn75mrrjq24sqtgp741@ds057066.mlab.com:57066/heroku_d1c60rjq')
   
-  app.get('*', function response(req, res) {
-    console.log('DIRDIRDIRDIRDIRDIRDIRDIRDIRDIRDIRDIRDIRDIRIDRIDIRDIRIDIRIDIRID', __dirname)
-    res.sendFile(path.join(__dirname, 'dist/index.html'));
-  });
+  /*****************************
+   * UPLOAD COMMISSIONED PHOTO *
+   ****************************/
   
   app.post('/uploadCommissionedPhoto', function(req, res) {
+    console.log('---------------------------------------------------------------------------------------------------------------')
     
     var fileArray = [];
     const coverTitle = req.body.coverTitle.replace(/ /g,"_");
@@ -143,6 +167,9 @@ if (isDeveloping) {
       if (err) console.error('MKDIR ERR:', err);
       else console.log('MKDIR OK', coverTitle);
     });
+    
+    // const dirName = path.join(__dirname,`/app/data/commissionedWork/photos/${coverTitle}`);
+    // fs.mkdirSync('test', function(err){ console.log('CALLBACK', err)});
     
     for (let file in req.files){
       if(req.files.hasOwnProperty(file) && req.files[file].data) fileArray.push(req.files[file]);
@@ -166,7 +193,7 @@ if (isDeveloping) {
     
     var category = new commissionedWorkImages({
       coverTitle: coverTitle,
-      coverUrl: `photos/${coverTitle}/${fileArray[0].name}`,
+      coverUrl: fileArray.lenght > 0 && `photos/${coverTitle}/${fileArray[0].name}`,
       images: [...imageData]
     });
     
@@ -179,6 +206,12 @@ if (isDeveloping) {
     res.write(path.join(__dirname, 'dist/index.html'));
     res.end();
     
+  });
+  
+  /**********************/
+  
+  app.get('*', function response(req, res) {
+    res.sendFile(path.join(__dirname, 'dist/index.html'));
   });
   
 }
